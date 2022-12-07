@@ -84,13 +84,14 @@ public class StepTracker {
     int bestSeries(int month) { // Метод возвращает значение лучшей серии дней(максимальное количество подряд идущих дней, в течение которых количество шагов за день было равно или выше целевого.)
         int countDays = 0;
         int maxCountDays = 0;
-        for (int i = 0; i < monthToData[month].stepsDay.length; i++) {
+        for (int i = 0; i < monthToData[month].stepsDay.length; i++) { // поправил алгоритм подсчета лучшей серии
             if (monthToData[month].stepsDay[i] >= numberSteps) {
                 countDays = countDays + 1;
-            } else {
-                if (countDays > maxCountDays) {
+
+                if (maxCountDays < countDays) {
                     maxCountDays = countDays;
                 }
+            } else {
                 countDays = 0;
             }
         }
